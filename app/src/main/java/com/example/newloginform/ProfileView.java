@@ -2,15 +2,13 @@ package com.example.newloginform;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.view.View;
+
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
 
 public class ProfileView extends AppCompatActivity {
     @Override

@@ -13,9 +13,7 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
 
 
 public class MainActivity extends AppCompatActivity {
@@ -62,19 +60,22 @@ public class MainActivity extends AppCompatActivity {
             String us = "Raizel";
             String pws = "Pogi";
             // CHECK IF THE IMAGE IS NULL
-            if (user.isEmpty() || pw.isEmpty() || img == null) {
-                Toast.makeText(MainActivity.this, "Missing fields or no image selected", Toast.LENGTH_SHORT).show();
+            if (img == null) {
+                Toast.makeText(MainActivity.this, "No Photo Taken. Take a Photo", Toast.LENGTH_SHORT).show();
+            } else if (user.isEmpty() || pw.isEmpty()) {
+                Toast.makeText(MainActivity.this, "Please Fill up the forms", Toast.LENGTH_SHORT).show();
             } else {
                 if (user.equals(us) && pw.equals(pws)) {
                     Toast.makeText(MainActivity.this, "Successfully Login", Toast.LENGTH_SHORT).show();
-                    // An intent to start the ProfileView
                     Intent intent = new Intent(MainActivity.this, ProfileView.class);
                     intent.putExtra("username", user);
                     intent.putExtra("password", pw);
                     intent.putExtra("image", img);
                     startActivity(intent);
+                } else if (!user.equals(us)) {
+                    Toast.makeText(MainActivity.this, "Wrong Username", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(MainActivity.this, "Unsuccessful Login", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Wrong Password", Toast.LENGTH_SHORT).show();
                 }
             }
         });
