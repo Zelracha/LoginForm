@@ -13,6 +13,12 @@
         android:theme="@style/Theme.NewLoginForm"
         tools:targetApi="31">
         <activity
+            android:name=".ProfileView"
+            android:exported="false" />
+        <activity
+            android:name=".Profileviews"
+            android:exported="false" />
+        <activity
             android:name=".Register"
             android:exported="false" />
         <activity

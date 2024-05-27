@@ -2,7 +2,6 @@ package com.example.newloginform;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -30,12 +29,6 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars =
-                    insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
         btnimagepick = (findViewById(R.id.btnpickimage));
         btnimagepick.setOnClickListener(new View.OnClickListener() { @Override
         public void onClick(View view) {
@@ -74,6 +67,12 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 if (user.equals(us) && pw.equals(pws)) {
                     Toast.makeText(MainActivity.this, "Successfully Login", Toast.LENGTH_SHORT).show();
+                    // An intent to start the ProfileView
+                    Intent intent = new Intent(MainActivity.this, ProfileView.class);
+                    intent.putExtra("username", user);
+                    intent.putExtra("password", pw);
+                    intent.putExtra("image", img);
+                    startActivity(intent);
                 } else {
                     Toast.makeText(MainActivity.this, "Unsuccessful Login", Toast.LENGTH_SHORT).show();
                 }
